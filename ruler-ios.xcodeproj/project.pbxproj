@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */; };
 		A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */; };
-		A0CAD58B273DA08E00E76BC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* ViewController.swift */; };
+		A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */; };
 		A0CAD58E273DA08E00E76BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58C273DA08E00E76BC0 /* Main.storyboard */; };
 		A0CAD590273DA09300E76BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58F273DA09300E76BC0 /* Assets.xcassets */; };
 		A0CAD593273DA09300E76BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		A0CAD583273DA08E00E76BC0 /* ruler-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ruler-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A0CAD58A273DA08E00E76BC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerViewController.swift; sourceTree = "<group>"; };
 		A0CAD58D273DA08E00E76BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0CAD58F273DA09300E76BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0CAD592273DA09300E76BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */,
 				A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */,
-				A0CAD58A273DA08E00E76BC0 /* ViewController.swift */,
+				A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */,
 				A0CAD58C273DA08E00E76BC0 /* Main.storyboard */,
 				A0CAD58F273DA09300E76BC0 /* Assets.xcassets */,
 				A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */,
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CAD58B273DA08E00E76BC0 /* ViewController.swift in Sources */,
+				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,
 			);
