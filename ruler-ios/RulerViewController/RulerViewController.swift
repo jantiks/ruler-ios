@@ -12,10 +12,12 @@ class RulerViewController: UIViewController {
     //MARK: Properties
     @IBOutlet private weak var sceneView: ARSCNView!
     @IBOutlet private weak var resultButton: UIButton!
+    @IBOutlet private weak var resultButtonContainer: UIView!
     @IBOutlet private weak var sessionLabel: UILabel!
     
     private var nodes: [RulerNodes] = []
     private var meauseremntType: MeasurementType = .meters
+    private var measurerNode: MeasurerNode!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -33,6 +35,7 @@ class RulerViewController: UIViewController {
         sceneView.debugOptions = [.showFeaturePoints]
         
         initUi()
+        setNodes()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,15 +50,20 @@ class RulerViewController: UIViewController {
         // making blur bg for button
         let blur = UIVisualEffectView(effect: UIBlurEffect(style:
                     UIBlurEffect.Style.regular))
-        blur.frame = resultButton.bounds
-        resultButton.insertSubview(blur, at: 1)
+        blur.frame = resultButtonContainer.bounds
+        resultButtonContainer.insertSubview(blur, at: 0)
         
         sessionLabel.layer.cornerRadius = 20
-        resultButton.layer.cornerRadius = 20
+        resultButtonContainer.layer.cornerRadius = 20
         blur.layer.cornerRadius = 20
         
         resultButton.setTitleColor(.white, for: .normal)
-        resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(20)
+        resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(25)
+    }
+    
+    private func setNodes() {
+        measurerNode = MeasurerNode()
+        sceneView.scene.rootNode.addChildNode(measurerNode)
     }
     
     private func setResultButtonText(_ endVector: SCNVector3? = nil) {
@@ -79,25 +87,13 @@ class RulerViewController: UIViewController {
     /// turning on/off the torch
     private func toggleFlash() {
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
-            guard device.hasTorch else { return }
-
-            do {
-                try device.lockForConfiguration()
-
-                if (device.torchMode == AVCaptureDevice.TorchMode.on) {
-                    device.torchMode = AVCaptureDevice.TorchMode.off
-                } else {
-                    do {
-                        try device.setTorchModeOn(level: 1.0)
-                    } catch {
-                        print(error)
-                    }
-                }
-
-                device.unlockForConfiguration()
-            } catch {
-                print(error)
-            }
+        guard device.hasTorch else { return }
+                
+        if (device.torchMode == AVCaptureDevice.TorchMode.on) {
+            device.torchMode = AVCaptureDevice.TorchMode.off
+        } else {
+            try? device.setTorchModeOn(level: 1.0)
+        }
     }
     
     /// adding a node in the center if the scereen.
@@ -111,6 +107,7 @@ class RulerViewController: UIViewController {
         sceneView.scene.rootNode.addChildNode(node)
         
         if nodes.last?.isComplete() == true || nodes.isEmpty {
+            // making new ruler node
             let lineNode = SCNNode()
             let textNode = DrawnTextNode()
             let rulerNode = RulerNodes(startNode: node, lineNode: lineNode, textNode: textNode)
@@ -120,6 +117,7 @@ class RulerViewController: UIViewController {
             sceneView.scene.rootNode.addChildNode(lineNode)
             sceneView.scene.rootNode.addChildNode(textNode)
         } else {
+            // the ruler node ends
             nodes.last?.setEndNode(node)
             setResultButtonText()
         }
@@ -187,7 +185,6 @@ class RulerViewController: UIViewController {
 extension RulerViewController: ARSCNViewDelegate {
     
     func session(_ session: ARSession, didFailWithError error: Error) {
-        sessionLabel.text = "Session failed: \(error.localizedDescription)"
         guard error is ARError else { return }
         
         let errorWithInfo = error as NSError
@@ -230,9 +227,26 @@ extension RulerViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async { [weak self] in
-            if let node = self?.nodes.last, !node.isComplete(), let centerWorldVector = self?.getCenterWorldPosition() {
+            guard let self = self else { return }
+            
+            if let node = self.nodes.last, !node.isComplete(), let centerWorldVector = self.getCenterWorldPosition() {
                 node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector)
-                self?.setResultButtonText(centerWorldVector)
+                self.setResultButtonText(centerWorldVector)
+            }
+        
+            let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
+            if
+                let hitTest = self.sceneView.hitTest(screenCenter, types: .existingPlaneUsingExtent).first,
+                let planeAnchor = hitTest.anchor as? ARPlaneAnchor,
+                let anchoredNode =  self.sceneView.node(for: planeAnchor),
+                let position = self.getCenterWorldPosition() {
+                self.measurerNode.position = position
+                self.measurerNode.rotation = anchoredNode.rotation
+                self.measurerNode.enable()
+            } else if let featurePoint = self.sceneView.hitTest(screenCenter, types: .featurePoint).first {
+                self.measurerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
+                self.measurerNode.eulerAngles.x = -.pi / 2
+                self.measurerNode.disable()
             }
         }
     }

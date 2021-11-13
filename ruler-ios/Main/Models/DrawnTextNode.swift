@@ -37,7 +37,7 @@ class DrawnTextNode: SCNNode {
         updateBackgroundNode()
         point.x -= 0.008
         position = (textPosition == nil) ? point : textPosition!
-        scale = SCNVector3(0.0008, 0.0008, 0.0008)
+        scale = SCNVector3(abs(point.x * 0.008), abs(point.y * 0.008), abs(point.z * 0.008))
     }
     
     private func updateBackgroundNode() {
@@ -52,7 +52,7 @@ class DrawnTextNode: SCNNode {
             backgroundNode.geometry = plane
         }
         
-        backgroundNode.position = SCNVector3(CGFloat( minVec.x) + CGFloat(bound.x) / 2 , CGFloat( minVec.y) + CGFloat(bound.y) / 2, CGFloat(minVec.z))
+        backgroundNode.position = SCNVector3(CGFloat(minVec.x) + CGFloat(bound.x) / 2 , CGFloat(minVec.y) + CGFloat(bound.y) / 2, CGFloat(minVec.z))
         backgroundNode.name = "textBackground"
     }
     
