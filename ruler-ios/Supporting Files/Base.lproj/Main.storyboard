@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,7 +30,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="114.5" height="46"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="reload"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.backward.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="reloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eo7-dl-3pN"/>
                                                 </connections>
@@ -38,7 +39,9 @@
                                                 <rect key="frame" x="129.5" y="0.0" width="115" height="46"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="ruler"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="rulerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aha-dJ-tvk"/>
                                                 </connections>
@@ -47,7 +50,7 @@
                                                 <rect key="frame" x="259.5" y="0.0" width="114.5" height="46"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="flash light"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="flashlight.off.fill" catalog="system"/>
                                                 <connections>
                                                     <action selector="flashLightAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVk-Wj-lIO"/>
                                                 </connections>
@@ -63,22 +66,63 @@
                                     <constraint firstItem="WcT-zt-CbC" firstAttribute="top" secondItem="Kpd-P1-EOL" secondAttribute="top" id="yoH-Ny-uQV"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smallcircle.filled.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PIp-gA-4hX">
+                                <rect key="frame" x="187" y="431" width="40" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="vIz-oJ-ml6"/>
+                                    <constraint firstAttribute="height" constant="40" id="yMS-HF-m25"/>
+                                </constraints>
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOr-dZ-vtg" userLabel="result button">
+                                <rect key="frame" x="87" y="114" width="240" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FGU-ZW-g9h"/>
+                                    <constraint firstAttribute="height" constant="55" id="gdE-ZU-e4C"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="changeMeasurementType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ps-3a-WeB"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="lcC-RQ-I5K" userLabel="session label">
+                                <rect key="frame" x="82" y="423" width="250" height="60"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="GdC-Ci-zIO"/>
+                                    <constraint firstAttribute="height" constant="60" id="jnA-hm-zuW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PIp-gA-4hX" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="A0M-Gx-Fkv"/>
+                            <constraint firstItem="lcC-RQ-I5K" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E2r-uz-635"/>
+                            <constraint firstItem="lcC-RQ-I5K" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ENL-JZ-Pe7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WcT-zt-CbC" secondAttribute="bottom" id="QyU-l2-jZs"/>
+                            <constraint firstItem="PIp-gA-4hX" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="R1w-Po-aWx"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="WrA-B6-CkV"/>
+                            <constraint firstItem="ZOr-dZ-vtg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="cp9-TC-M5Z"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dye-nS-4El"/>
                             <constraint firstAttribute="bottom" secondItem="Kpd-P1-EOL" secondAttribute="bottom" id="jRj-xc-CYI"/>
                             <constraint firstAttribute="bottom" secondItem="L3a-9p-fem" secondAttribute="bottom" id="l3k-4e-EfC"/>
+                            <constraint firstItem="ZOr-dZ-vtg" firstAttribute="centerX" secondItem="L3a-9p-fem" secondAttribute="centerX" id="nnE-nf-wD1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kpd-P1-EOL" secondAttribute="trailing" id="oqd-ao-7dQ"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yOW-QX-Wto"/>
                             <constraint firstItem="Kpd-P1-EOL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yb3-t3-ZS6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="resultButton" destination="ZOr-dZ-vtg" id="UGA-Ku-azP"/>
                         <outlet property="sceneView" destination="L3a-9p-fem" id="rl4-Gv-uX3"/>
+                        <outlet property="sessionLabel" destination="lcC-RQ-I5K" id="iWo-uI-eV0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -87,6 +131,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
+        <image name="flashlight.off.fill" catalog="system" width="76" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="smallcircle.filled.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

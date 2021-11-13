@@ -7,15 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */; };
+		A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */; };
+		A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B00273FA3E000C7A615 /* MeasurementType.swift */; };
+		A03A8B03273FDF4A00C7A615 /* MeasurerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */; };
 		A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */; };
 		A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */; };
 		A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */; };
 		A0CAD58E273DA08E00E76BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58C273DA08E00E76BC0 /* Main.storyboard */; };
 		A0CAD590273DA09300E76BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58F273DA09300E76BC0 /* Assets.xcassets */; };
 		A0CAD593273DA09300E76BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */; };
+		A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */; };
+		A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnTextNode.swift; sourceTree = "<group>"; };
+		A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHelper.swift; sourceTree = "<group>"; };
+		A03A8B00273FA3E000C7A615 /* MeasurementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementType.swift; sourceTree = "<group>"; };
+		A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurerNode.swift; sourceTree = "<group>"; };
 		A0CAD583273DA08E00E76BC0 /* ruler-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ruler-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +34,8 @@
 		A0CAD58F273DA09300E76BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0CAD592273DA09300E76BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0CAD594273DA09300E76BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
+		A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerNodes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A03A8AFE273FA3CA00C7A615 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A0CAD57A273DA08E00E76BC0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +76,61 @@
 		A0CAD585273DA08E00E76BC0 /* ruler-ios */ = {
 			isa = PBXGroup;
 			children = (
-				A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */,
-				A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */,
-				A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */,
-				A0CAD58C273DA08E00E76BC0 /* Main.storyboard */,
-				A0CAD58F273DA09300E76BC0 /* Assets.xcassets */,
-				A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */,
+				A0CAD59E273EF1FA00E76BC0 /* Main */,
+				A0CAD59C273EF0AA00E76BC0 /* RulerViewController */,
+				A0CAD59D273EF0C800E76BC0 /* Supporting Files */,
 				A0CAD594273DA09300E76BC0 /* Info.plist */,
 			);
 			path = "ruler-ios";
+			sourceTree = "<group>";
+		};
+		A0CAD59C273EF0AA00E76BC0 /* RulerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */,
+			);
+			path = RulerViewController;
+			sourceTree = "<group>";
+		};
+		A0CAD59D273EF0C800E76BC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */,
+				A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */,
+				A0CAD58C273DA08E00E76BC0 /* Main.storyboard */,
+				A0CAD58F273DA09300E76BC0 /* Assets.xcassets */,
+				A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0CAD59E273EF1FA00E76BC0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8AFE273FA3CA00C7A615 /* Helpers */,
+				A0CAD5A2273EF27300E76BC0 /* Models */,
+				A0CAD5A1273EF26700E76BC0 /* Extensions */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A0CAD5A1273EF26700E76BC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A0CAD5A2273EF27300E76BC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */,
+				A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */,
+				A03A8B00273FA3E000C7A615 /* MeasurementType.swift */,
+				A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +204,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */,
+				A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */,
+				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
 				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
+				A03A8B03273FDF4A00C7A615 /* MeasurerNode.swift in Sources */,
+				A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */,
+				A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

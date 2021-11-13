@@ -1,0 +1,239 @@
+//
+//  ViewController.swift
+//  ruler-ios
+//
+//  Created by Tigran Arsenyan on 11/11/21.
+//
+
+import UIKit
+import ARKit
+
+class RulerViewController: UIViewController {
+    //MARK: Properties
+    @IBOutlet private weak var sceneView: ARSCNView!
+    @IBOutlet private weak var resultButton: UIButton!
+    @IBOutlet private weak var sessionLabel: UILabel!
+    
+    private var nodes: [RulerNodes] = []
+    private var meauseremntType: MeasurementType = .meters
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        sceneView.delegate = self
+        
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        
+        sceneView.session.run(configuration, options: [])
+        sceneView.debugOptions = [.showFeaturePoints]
+        
+        initUi()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Pause the view's AR session.
+        sceneView.session.pause()
+    }
+    
+    // MARK: Private methods.
+    private func initUi() {
+        // making blur bg for button
+        let blur = UIVisualEffectView(effect: UIBlurEffect(style:
+                    UIBlurEffect.Style.regular))
+        blur.frame = resultButton.bounds
+        resultButton.insertSubview(blur, at: 1)
+        
+        sessionLabel.layer.cornerRadius = 20
+        resultButton.layer.cornerRadius = 20
+        blur.layer.cornerRadius = 20
+        
+        resultButton.setTitleColor(.white, for: .normal)
+        resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(20)
+    }
+    
+    private func setResultButtonText(_ endVector: SCNVector3? = nil) {
+        guard let lastNode = nodes.last else { return }
+        
+        resultButton.setTitle("\(String(format: "%.02f", lastNode.getDistance(meauseremntType, to: endVector))) \(meauseremntType)", for: .normal)
+    }
+    
+    /// - Returns: returnes the world position of the center of the screen
+    private func getCenterWorldPosition() -> SCNVector3? {
+        let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
+        let planeTestResults = sceneView.hitTest(screenCenter, types: [.existingPlaneUsingExtent])
+        
+        if let result = planeTestResults.first {
+            return SCNVector3Make(result.worldTransform.columns.3.x, result.worldTransform.columns.3.y, result.worldTransform.columns.3.z)
+        }
+        
+        return nil
+    }
+    
+    /// turning on/off the torch
+    private func toggleFlash() {
+        guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+            guard device.hasTorch else { return }
+
+            do {
+                try device.lockForConfiguration()
+
+                if (device.torchMode == AVCaptureDevice.TorchMode.on) {
+                    device.torchMode = AVCaptureDevice.TorchMode.off
+                } else {
+                    do {
+                        try device.setTorchModeOn(level: 1.0)
+                    } catch {
+                        print(error)
+                    }
+                }
+
+                device.unlockForConfiguration()
+            } catch {
+                print(error)
+            }
+    }
+    
+    /// adding a node in the center if the scereen.
+    private func addPoint() {
+        guard let worldPosition = getCenterWorldPosition() else { return }
+        
+        let sphere = SCNSphere(radius: 0.006)
+        
+        let node = SCNNode(geometry: sphere)
+        node.position = worldPosition
+        sceneView.scene.rootNode.addChildNode(node)
+        
+        if nodes.last?.isComplete() == true || nodes.isEmpty {
+            let lineNode = SCNNode()
+            let textNode = DrawnTextNode()
+            let rulerNode = RulerNodes(startNode: node, lineNode: lineNode, textNode: textNode)
+            
+            nodes.append(rulerNode)
+            
+            sceneView.scene.rootNode.addChildNode(lineNode)
+            sceneView.scene.rootNode.addChildNode(textNode)
+        } else {
+            nodes.last?.setEndNode(node)
+            setResultButtonText()
+        }
+    }
+    
+    /// depeneds on ARSession tracking state, the method shows or hides a label which indicates about the state of the ar session if there is something wrong
+    /// - Parameters:
+    ///   - frame: ARFrame
+    ///   - trackingState: the session's state.
+    private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
+        // Update the UI to provide feedback on the state of the AR experience.
+        let message: String
+
+        switch trackingState {
+        case .notAvailable:
+            message = "Tracking unavailable."
+            
+        case .limited(.excessiveMotion):
+            message = "Tracking limited - Move the device more slowly."
+            
+        case .limited(.insufficientFeatures):
+            message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
+            
+        case .limited(.initializing):
+            message = "Initializing AR session."
+            
+        default:
+            // No feedback needed when tracking is normal and planes are visible.
+            // (Nor when in unreachable limited-tracking states.)
+            message = ""
+
+        }
+        
+        sessionLabel.text = message
+        sessionLabel.isHidden = message.isEmpty
+    }
+    
+    private func resetTracking() {
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    // MARK: IBActions
+    @IBAction func reloadAction(_ sender: UIButton) {
+        nodes.forEach({ $0.removeNodes() })
+        nodes.removeAll()
+        resultButton.setTitle("", for: .normal)
+    }
+    
+    @IBAction func rulerAction(_ sender: UIButton) {
+        addPoint()
+    }
+    
+    @IBAction func flashLightAction(_ sender: UIButton) {
+        toggleFlash()
+    }
+    
+    @IBAction func changeMeasurementType(_ sender: UIButton) {
+        meauseremntType.next()
+        setResultButtonText()
+    }
+}
+
+extension RulerViewController: ARSCNViewDelegate {
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {
+        sessionLabel.text = "Session failed: \(error.localizedDescription)"
+        guard error is ARError else { return }
+        
+        let errorWithInfo = error as NSError
+        let messages = [
+            errorWithInfo.localizedDescription,
+            errorWithInfo.localizedFailureReason,
+            errorWithInfo.localizedRecoverySuggestion
+        ]
+        
+        // Remove optional error messages.
+        let errorMessage = messages.compactMap({ $0 }).joined(separator: "\n")
+        
+        DispatchQueue.main.async {
+            // Present an alert informing about the error that has occurred.
+            let alertController = UIAlertController(title: "The AR session failed.", message: errorMessage, preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+                alertController.dismiss(animated: true, completion: nil)
+                self.resetTracking()
+            }
+            alertController.addAction(restartAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
+        guard let frame = session.currentFrame else { return }
+        
+        updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
+    }
+
+    func session(_ session: ARSession, didRemove anchors: [ARAnchor]) {
+        guard let frame = session.currentFrame else { return }
+        
+        updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
+    }
+
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
+        updateSessionInfoLabel(for: session.currentFrame!, trackingState: camera.trackingState)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        DispatchQueue.main.async { [weak self] in
+            if let node = self?.nodes.last, !node.isComplete(), let centerWorldVector = self?.getCenterWorldPosition() {
+                node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector)
+                self?.setResultButtonText(centerWorldVector)
+            }
+        }
+    }
+}
