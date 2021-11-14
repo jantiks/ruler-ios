@@ -14,6 +14,7 @@ class RulerNodes {
     private var endNode: SCNNode?
     private var lineNode: SCNNode
     private var textNode: DrawnTextNode
+    private var endVector: SCNVector3?
     
     init(startNode: SCNNode, lineNode: SCNNode, textNode: DrawnTextNode) {
         self.startNode = startNode
@@ -21,9 +22,15 @@ class RulerNodes {
         self.textNode = textNode
     }
     
-    func setEndNode(_ node: SCNNode) {
+    func setEndNode(_ node: SCNNode, type: MeasurementType) {
         endNode = node
-        buildLineWithTextNode(start: startNode.position, end: endNode!.position)
+        buildLineWithTextNode(start: startNode.position, end: endNode!.position, type: type)
+    }
+    
+    /// setting a vector to calculate distance from star node, if there is no endNode yet
+    /// - Parameter vector: the center world position, passed from RulerViewController
+    func setEndVector(_ vector: SCNVector3) {
+        endVector = vector
     }
     
     func getStart() -> SCNNode {
@@ -34,17 +41,22 @@ class RulerNodes {
     /// - Parameters:
     ///   - start: start vector
     ///   - end: end vector
-    func buildLineWithTextNode(start: SCNVector3, end: SCNVector3) {
+    func buildLineWithTextNode(start: SCNVector3, end: SCNVector3, type: MeasurementType) {
         lineNode.buildLineInTwoPointsWithRotation(from: start, to: end, radius: 0.001, diffuse: UIColor.white)
-        textNode.update(pos1: start, pos2: end, textPosition: SCNHelper.getMidpoint(A: start, B: end))
+        textNode.update(pos1: start, pos2: end, textPosition: SCNHelper.getMidpoint(A: start, B: end), type: type)
     }
     
-    func getDistance(_ type: MeasurementType, to vector: SCNVector3? = nil) -> Double {
-        if vector == nil {
-            return startNode.distance(to: endNode!.position)
+    /// returnes the distance between start and end nodes, if there is end node, returnes the distance between start and the last center world vector.
+    /// - Parameter type: the calculation type
+    /// - Returns: distance.
+    func getDistance(_ type: MeasurementType) -> Double {
+        if let endNode = endNode {
+            return startNode.distance(to: endNode.position) * type.getRatioInMeters()
+        } else if let endVector = endVector {
+            return startNode.distance(to: endVector) * type.getRatioInMeters()
         }
         
-        return startNode.distance(to: vector!)
+        return 0
     }
     
     func removeNodes() {

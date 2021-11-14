@@ -17,7 +17,7 @@ class RulerViewController: UIViewController {
     
     private var nodes: [RulerNodes] = []
     private var meauseremntType: MeasurementType = .meters
-    private var measurerNode: MeasurerNode!
+    private var pickerNode: PickerNode!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -41,7 +41,6 @@ class RulerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        // Pause the view's AR session.
         sceneView.session.pause()
     }
     
@@ -53,23 +52,23 @@ class RulerViewController: UIViewController {
         blur.frame = resultButtonContainer.bounds
         resultButtonContainer.insertSubview(blur, at: 0)
         
+        blur.layer.cornerRadius = 20
         sessionLabel.layer.cornerRadius = 20
         resultButtonContainer.layer.cornerRadius = 20
-        blur.layer.cornerRadius = 20
         
         resultButton.setTitleColor(.white, for: .normal)
         resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(25)
     }
     
     private func setNodes() {
-        measurerNode = MeasurerNode()
-        sceneView.scene.rootNode.addChildNode(measurerNode)
+        pickerNode = PickerNode()
+        sceneView.scene.rootNode.addChildNode(pickerNode)
     }
     
     private func setResultButtonText(_ endVector: SCNVector3? = nil) {
         guard let lastNode = nodes.last else { return }
         
-        resultButton.setTitle("\(String(format: "%.02f", lastNode.getDistance(meauseremntType, to: endVector))) \(meauseremntType)", for: .normal)
+        resultButton.setTitle("\(String(format: "%.02f", lastNode.getDistance(meauseremntType))) \(meauseremntType)", for: .normal)
     }
     
     /// - Returns: returnes the world position of the center of the screen
@@ -118,7 +117,7 @@ class RulerViewController: UIViewController {
             sceneView.scene.rootNode.addChildNode(textNode)
         } else {
             // the ruler node ends
-            nodes.last?.setEndNode(node)
+            nodes.last?.setEndNode(node, type: meauseremntType)
             setResultButtonText()
         }
     }
@@ -153,6 +152,35 @@ class RulerViewController: UIViewController {
         
         sessionLabel.text = message
         sessionLabel.isHidden = message.isEmpty
+    }
+    
+    /// every time changing the position of the line which is created between start node and the Picker Node.
+    private func updateCurrentLinePosition() {
+        if let node = nodes.last, !node.isComplete(), let centerWorldVector = getCenterWorldPosition() {
+            node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector, type: meauseremntType)
+            node.setEndVector(centerWorldVector)
+            setResultButtonText()
+        }
+    }
+    
+    /// when the ARKit is not able to find a plane in the center of the screen, this method disables the Picker Node, otherwise it enables the Picker Node.
+    private func enableOrDisablePickerNode () {
+        let screenCenter : CGPoint = CGPoint(x: sceneView.bounds.midX, y: sceneView.bounds.midY)
+        
+        if let hitTest = sceneView.hitTest(screenCenter, types: .existingPlaneUsingExtent).first,
+            let planeAnchor = hitTest.anchor as? ARPlaneAnchor,
+            let anchoredNode = sceneView.node(for: planeAnchor),
+            let position = getCenterWorldPosition() {
+            // ARKit could find a plane
+            pickerNode.position = position
+            pickerNode.rotation = anchoredNode.rotation
+            pickerNode.enable()
+        } else if let featurePoint = sceneView.hitTest(screenCenter, types: .featurePoint).first {
+            // ARKit couldn't find a plane
+            pickerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
+            pickerNode.eulerAngles.x = -.pi / 2
+            pickerNode.disable()
+        }
     }
     
     private func resetTracking() {
@@ -228,26 +256,9 @@ extension RulerViewController: ARSCNViewDelegate {
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            
-            if let node = self.nodes.last, !node.isComplete(), let centerWorldVector = self.getCenterWorldPosition() {
-                node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector)
-                self.setResultButtonText(centerWorldVector)
-            }
-        
-            let screenCenter : CGPoint = CGPoint(x: self.sceneView.bounds.midX, y: self.sceneView.bounds.midY)
-            if
-                let hitTest = self.sceneView.hitTest(screenCenter, types: .existingPlaneUsingExtent).first,
-                let planeAnchor = hitTest.anchor as? ARPlaneAnchor,
-                let anchoredNode =  self.sceneView.node(for: planeAnchor),
-                let position = self.getCenterWorldPosition() {
-                self.measurerNode.position = position
-                self.measurerNode.rotation = anchoredNode.rotation
-                self.measurerNode.enable()
-            } else if let featurePoint = self.sceneView.hitTest(screenCenter, types: .featurePoint).first {
-                self.measurerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
-                self.measurerNode.eulerAngles.x = -.pi / 2
-                self.measurerNode.disable()
-            }
+            // when there is a plane.
+            self.updateCurrentLinePosition()
+            self.enableOrDisablePickerNode()
         }
     }
 }

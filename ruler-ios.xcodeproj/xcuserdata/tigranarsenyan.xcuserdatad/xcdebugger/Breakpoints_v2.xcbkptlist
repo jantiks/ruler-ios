@@ -14,8 +14,8 @@
             filePath = "ruler-ios/RulerViewController/RulerViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "changeMeasurementType(_:)"
             landmarkType = "7">
          </BreakpointContent>

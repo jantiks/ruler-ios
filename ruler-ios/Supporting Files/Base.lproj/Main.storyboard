@@ -82,6 +82,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="ZOr-dZ-vtg" firstAttribute="leading" secondItem="m7C-pc-9av" secondAttribute="leading" id="AWN-Yu-SUQ"/>
                                     <constraint firstAttribute="bottom" secondItem="ZOr-dZ-vtg" secondAttribute="bottom" id="l15-zS-M6Y"/>

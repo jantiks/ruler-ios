@@ -10,7 +10,7 @@
 		A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */; };
 		A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */; };
 		A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B00273FA3E000C7A615 /* MeasurementType.swift */; };
-		A03A8B03273FDF4A00C7A615 /* MeasurerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */; };
+		A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* PickerNode.swift */; };
 		A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */; };
 		A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */; };
 		A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */; };
@@ -25,7 +25,7 @@
 		A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnTextNode.swift; sourceTree = "<group>"; };
 		A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHelper.swift; sourceTree = "<group>"; };
 		A03A8B00273FA3E000C7A615 /* MeasurementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementType.swift; sourceTree = "<group>"; };
-		A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurerNode.swift; sourceTree = "<group>"; };
+		A03A8B02273FDF4A00C7A615 /* PickerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerNode.swift; sourceTree = "<group>"; };
 		A0CAD583273DA08E00E76BC0 /* ruler-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ruler-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */,
 				A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */,
 				A03A8B00273FA3E000C7A615 /* MeasurementType.swift */,
-				A03A8B02273FDF4A00C7A615 /* MeasurerNode.swift */,
+				A03A8B02273FDF4A00C7A615 /* PickerNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,7 +209,7 @@
 				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
 				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
-				A03A8B03273FDF4A00C7A615 /* MeasurerNode.swift in Sources */,
+				A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */,
 				A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */,
 				A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,

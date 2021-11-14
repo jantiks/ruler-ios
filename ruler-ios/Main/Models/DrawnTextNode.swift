@@ -22,10 +22,10 @@ class DrawnTextNode: SCNNode {
         super.init(coder: coder)
     }
     
-    func update(pos1: SCNVector3, pos2: SCNVector3, textPosition: SCNVector3? = nil) {
+    func update(pos1: SCNVector3, pos2: SCNVector3, textPosition: SCNVector3? = nil, type: MeasurementType) {
         // making the text
         var point = SCNHelper.getMidpoint(A: pos1, B: pos2)
-        let desc = self.getDistanceStringBeween(pos1: pos1, pos2: pos2)
+        let desc = self.getDistanceStringBeween(pos1: pos1, pos2: pos2, type: type)
         let text = SCNText(string: desc, extrusionDepth: 0.01)
         text.font = UIFont(name: "HelveticaNeue", size: 8.0)
         
@@ -57,15 +57,15 @@ class DrawnTextNode: SCNNode {
     }
     
     
-    private func getDistanceStringBeween(pos1: SCNVector3?, pos2: SCNVector3?) -> String {
+    private func getDistanceStringBeween(pos1: SCNVector3?, pos2: SCNVector3?, type: MeasurementType) -> String {
         
         if pos1 == nil || pos2 == nil {
             return "0"
         }
         let d = SCNHelper.distance(from: pos1!, to: pos2!)
         
-        let sm = d * 100
-        let sms = stringValue(v: Float(sm), unit: "sm")
+        let sm = d * type.getRatioInMeters()
+        let sms = stringValue(v: Float(sm), unit: "\(type)")
         
         return sms
     }
