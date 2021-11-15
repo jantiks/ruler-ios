@@ -22,9 +22,9 @@ class DrawnTextNode: SCNNode {
         super.init(coder: coder)
     }
     
-    func update(pos1: SCNVector3, pos2: SCNVector3, textPosition: SCNVector3? = nil, type: MeasurementType) {
+    func update(pos1: SCNVector3, pos2: SCNVector3, textPosition: SCNVector3? = nil, type: MeasurementType, textRotation: SCNVector3) {
         // making the tex3t
-        let point = SCNHelper.getMidpoint(A: pos2, B: pos1)
+        let point = SCNHelper.getMidpoint(A: pos1, B: pos2)
         let desc = self.getDistanceStringBeween(pos1: pos1, pos2: pos2, type: type)
         let text = SCNText(string: desc, extrusionDepth: 0.01)
         text.font = UIFont(name: "HelveticaNeue", size: 8.0)
@@ -36,17 +36,9 @@ class DrawnTextNode: SCNNode {
         geometry = text
         
         updateBackgroundNode()
-//        point.x -= 0.008
         position = (textPosition == nil) ? point : textPosition!
-//        eulerAngles = SCNVector3(x: -point.x, y: -point.y, z: -point.z)
-        
-//        if abs(point.z) > 0.5 {
-//            scale = SCNVector3(abs(0.008 * point.z), abs(0.008 * point.z), abs(0.008 * point.z))
-//        } else {
-//            scale = SCNVector3(abs(0.008), abs(0.008), abs(0.008))
-//        }
-        scale = SCNVector3(0.008, (0.008), (0.008))
-        print("START \(pos1) end \(pos2)")
+        eulerAngles = textRotation
+        scale = SCNVector3(0.008, 0.008, 0.008)
     }
     
     private func updateBackgroundNode() {

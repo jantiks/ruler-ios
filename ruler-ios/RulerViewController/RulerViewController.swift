@@ -16,7 +16,7 @@ class RulerViewController: UIViewController {
     @IBOutlet private weak var sessionLabel: UILabel!
     
     private var nodes: [RulerNodes] = []
-    private var meauseremntType: MeasurementType = .meters
+    private var meauseremntType: MeasurementType = .feets
     private var pickerNode: PickerNode!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -83,6 +83,12 @@ class RulerViewController: UIViewController {
         return nil
     }
     
+    private func getCameraRotation() -> SCNVector3? {
+        guard let pointOfView = sceneView.pointOfView else { return nil }
+        
+        return pointOfView.eulerAngles
+    }
+    
     /// turning on/off the torch
     private func toggleTorch() {
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
@@ -126,12 +132,12 @@ class RulerViewController: UIViewController {
             let rulerNode = RulerNodes(startNode: node, lineNode: lineNode, textNode: textNode)
             
             nodes.append(rulerNode)
-            
+             
             sceneView.scene.rootNode.addChildNode(lineNode)
             sceneView.scene.rootNode.addChildNode(textNode)
         } else {
             // the ruler node ends
-            nodes.last?.setEndNode(node, type: meauseremntType)
+            nodes.last?.setEndNode(node, type: meauseremntType, textRotation: getCameraRotation() ?? SCNVector3(0, 0, 0))
             setResultButtonText()
         }
     }
@@ -170,8 +176,8 @@ class RulerViewController: UIViewController {
     
     /// every time changing the position of the line which is created between start node and the Picker Node.
     private func updateCurrentLinePosition() {
-        if let node = nodes.last, !node.isComplete(), let centerWorldVector = getCenterWorldPosition() {
-            node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector, type: meauseremntType)
+        if let node = nodes.last, !node.isComplete(), let centerWorldVector = getCenterWorldPosition(), let cameraRotation = getCameraRotation() {
+            node.buildLineWithTextNode(start: node.getStart().position, end: centerWorldVector, type: meauseremntType, textRotation: cameraRotation)
             node.setEndVector(centerWorldVector)
             setResultButtonText()
         }
@@ -190,10 +196,8 @@ class RulerViewController: UIViewController {
             pickerNode.rotation = anchoredNode.rotation
             pickerNode.enable()
         } else if let featurePoint = sceneView.hitTest(screenCenter, types: .featurePoint).first {
-                        // ARKit couldn't find a plane
+            // ARKit couldn't find a plane
             pickerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
-            
-//            print("ROTATION \(pickerNode.rotation)")
             pickerNode.disable()
         }
     }

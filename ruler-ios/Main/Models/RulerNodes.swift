@@ -22,9 +22,10 @@ class RulerNodes {
         self.textNode = textNode
     }
     
-    func setEndNode(_ node: SCNNode, type: MeasurementType) {
+    func setEndNode(_ node: SCNNode, type: MeasurementType, textRotation: SCNVector3) {
+        
         endNode = node
-        buildLineWithTextNode(start: startNode.position, end: endNode!.position, type: type)
+        buildLineWithTextNode(start: startNode.position, end: endNode!.position, type: type, textRotation: textRotation)
     }
     
     /// setting a vector to calculate distance from star node, if there is no endNode yet
@@ -41,9 +42,9 @@ class RulerNodes {
     /// - Parameters:
     ///   - start: start vector
     ///   - end: end vector
-    func buildLineWithTextNode(start: SCNVector3, end: SCNVector3, type: MeasurementType) {
+    func buildLineWithTextNode(start: SCNVector3, end: SCNVector3, type: MeasurementType, textRotation: SCNVector3) {
         lineNode.buildLineInTwoPointsWithRotation(from: start, to: end, radius: 0.001, diffuse: UIColor.white)
-        textNode.update(pos1: start, pos2: end, type: type)
+        textNode.update(pos1: start, pos2: end, type: type, textRotation: textRotation)
     }
     
     /// returnes the distance between start and end nodes, if there is end node, returnes the distance between start and the last center world vector.
