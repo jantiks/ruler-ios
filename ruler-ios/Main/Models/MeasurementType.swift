@@ -27,6 +27,19 @@ enum MeasurementType {
         }
     }
     
+    func getShortName() -> String {
+        switch self {
+            case .meters:
+                return "m"
+            case .santimeters:
+                return "sm"
+            case .feets:
+                return "ft"
+            case .inches:
+                return "in"
+        }
+    }
+    
     mutating func next() {
         switch self {
             case .meters:

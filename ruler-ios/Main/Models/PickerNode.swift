@@ -17,7 +17,7 @@ class PickerNode: SCNNode {
         super.init()
         
         // outer circle
-        let sphereGeometry = SCNTube(innerRadius: 0.08, outerRadius: 0.1, height: 0.001)
+        let sphereGeometry = SCNTube(innerRadius: 0.06, outerRadius: 0.08, height: 0.001)
         sphereGeometry.firstMaterial?.diffuse.contents = UIColor.white
         outerCircleNode = SCNNode(geometry: sphereGeometry)
         

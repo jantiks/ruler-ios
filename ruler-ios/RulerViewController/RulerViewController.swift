@@ -68,7 +68,7 @@ class RulerViewController: UIViewController {
     private func setResultButtonText(_ endVector: SCNVector3? = nil) {
         guard let lastNode = nodes.last else { return }
         
-        resultButton.setTitle("\(String(format: "%.02f", lastNode.getDistance(meauseremntType))) \(meauseremntType)", for: .normal)
+        resultButton.setTitle("\(String(format: "%.01f", lastNode.getDistance(meauseremntType))) \(meauseremntType.getShortName())", for: .normal)
     }
     
     /// - Returns: returnes the world position of the center of the screen
@@ -84,14 +84,28 @@ class RulerViewController: UIViewController {
     }
     
     /// turning on/off the torch
-    private func toggleFlash() {
+    private func toggleTorch() {
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
         guard device.hasTorch else { return }
-                
-        if (device.torchMode == AVCaptureDevice.TorchMode.on) {
-            device.torchMode = AVCaptureDevice.TorchMode.off
-        } else {
-            try? device.setTorchModeOn(level: 1.0)
+        
+        do {
+            try device.lockForConfiguration()
+            
+            if (device.torchMode == AVCaptureDevice.TorchMode.on) {
+                device.torchMode = AVCaptureDevice.TorchMode.off
+            } else {
+                do {
+                    try device.setTorchModeOn(level: 1.0)
+                } catch {
+                    // not able to turn on the torch
+                    print(error)
+                }
+            }
+            
+            device.unlockForConfiguration()
+        } catch {
+            // can't lock the devices configuration
+            print(error)
         }
     }
     
@@ -176,9 +190,10 @@ class RulerViewController: UIViewController {
             pickerNode.rotation = anchoredNode.rotation
             pickerNode.enable()
         } else if let featurePoint = sceneView.hitTest(screenCenter, types: .featurePoint).first {
-            // ARKit couldn't find a plane
+                        // ARKit couldn't find a plane
             pickerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
-            pickerNode.eulerAngles.x = -.pi / 2
+            
+//            print("ROTATION \(pickerNode.rotation)")
             pickerNode.disable()
         }
     }
@@ -201,7 +216,7 @@ class RulerViewController: UIViewController {
     }
     
     @IBAction func flashLightAction(_ sender: UIButton) {
-        toggleFlash()
+        toggleTorch()
     }
     
     @IBAction func changeMeasurementType(_ sender: UIButton) {
@@ -260,5 +275,11 @@ extension RulerViewController: ARSCNViewDelegate {
             self.updateCurrentLinePosition()
             self.enableOrDisablePickerNode()
         }
+    }
+}
+
+extension SCNVector3 {
+    static func +(lhv:SCNVector3, rhv:SCNVector3) -> SCNVector3 {
+         return SCNVector3(lhv.x + rhv.x, lhv.y + rhv.y, lhv.z + rhv.z)
     }
 }

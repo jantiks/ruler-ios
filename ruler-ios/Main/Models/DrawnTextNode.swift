@@ -23,11 +23,12 @@ class DrawnTextNode: SCNNode {
     }
     
     func update(pos1: SCNVector3, pos2: SCNVector3, textPosition: SCNVector3? = nil, type: MeasurementType) {
-        // making the text
-        var point = SCNHelper.getMidpoint(A: pos1, B: pos2)
+        // making the tex3t
+        let point = SCNHelper.getMidpoint(A: pos2, B: pos1)
         let desc = self.getDistanceStringBeween(pos1: pos1, pos2: pos2, type: type)
         let text = SCNText(string: desc, extrusionDepth: 0.01)
         text.font = UIFont(name: "HelveticaNeue", size: 8.0)
+        text.alignmentMode = "kCAAlignmentCenter"
         
         let material = SCNMaterial()
         material.diffuse.contents = UIColor.white
@@ -35,9 +36,17 @@ class DrawnTextNode: SCNNode {
         geometry = text
         
         updateBackgroundNode()
-        point.x -= 0.008
+//        point.x -= 0.008
         position = (textPosition == nil) ? point : textPosition!
-        scale = SCNVector3(abs(point.x * 0.008), abs(point.y * 0.008), abs(point.z * 0.008))
+//        eulerAngles = SCNVector3(x: -point.x, y: -point.y, z: -point.z)
+        
+//        if abs(point.z) > 0.5 {
+//            scale = SCNVector3(abs(0.008 * point.z), abs(0.008 * point.z), abs(0.008 * point.z))
+//        } else {
+//            scale = SCNVector3(abs(0.008), abs(0.008), abs(0.008))
+//        }
+        scale = SCNVector3(0.008, (0.008), (0.008))
+        print("START \(pos1) end \(pos2)")
     }
     
     private func updateBackgroundNode() {
@@ -51,7 +60,7 @@ class DrawnTextNode: SCNNode {
             plane.firstMaterial?.isDoubleSided = true
             backgroundNode.geometry = plane
         }
-        
+        backgroundNode.opacity = 0.5
         backgroundNode.position = SCNVector3(CGFloat(minVec.x) + CGFloat(bound.x) / 2 , CGFloat(minVec.y) + CGFloat(bound.y) / 2, CGFloat(minVec.z))
         backgroundNode.name = "textBackground"
     }
@@ -65,7 +74,7 @@ class DrawnTextNode: SCNNode {
         let d = SCNHelper.distance(from: pos1!, to: pos2!)
         
         let sm = d * type.getRatioInMeters()
-        let sms = stringValue(v: Float(sm), unit: "\(type)")
+        let sms = stringValue(v: Float(sm), unit: "\(type.getShortName())")
         
         return sms
     }
