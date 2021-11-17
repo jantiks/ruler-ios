@@ -14,8 +14,8 @@ class DrawnTextNode: SCNNode {
     
     override init() {
         super.init()
-        self.addChildNode(backgroundNode)
         
+        self.addChildNode(backgroundNode)
     }
     
     required init?(coder: NSCoder) {
@@ -59,16 +59,15 @@ class DrawnTextNode: SCNNode {
     
     
     private func getDistanceStringBeween(pos1: SCNVector3?, pos2: SCNVector3?, type: MeasurementType) -> String {
-        
         if pos1 == nil || pos2 == nil {
             return "0"
         }
-        let d = SCNHelper.distance(from: pos1!, to: pos2!)
         
-        let sm = d * type.getRatioInMeters()
-        let sms = stringValue(v: Float(sm), unit: "\(type.getShortName())")
+        let distance = SCNHelper.distance(from: pos1!, to: pos2!)
+        let value = distance * type.getRatioInMeters()
+        let valueInStr = stringValue(v: Float(value), unit: "\(type.getShortName())")
         
-        return sms
+        return valueInStr
     }
     /**
      String with float value and unit

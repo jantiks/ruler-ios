@@ -23,7 +23,6 @@ class RulerNodes {
     }
     
     func setEndNode(_ node: SCNNode, type: MeasurementType, textRotation: SCNVector3) {
-        
         endNode = node
         buildLineWithTextNode(start: startNode.position, end: endNode!.position, type: type, textRotation: textRotation)
     }
@@ -36,6 +35,10 @@ class RulerNodes {
     
     func getStart() -> SCNNode {
         return startNode
+    }
+    
+    func getEnd() -> SCNNode? {
+        return endNode
     }
     
     /// builds a line between given vectors, and puts a distance node in the middle of the line

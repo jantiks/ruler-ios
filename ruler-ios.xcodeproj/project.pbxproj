@@ -19,6 +19,7 @@
 		A0CAD593273DA09300E76BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */; };
 		A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */; };
 		A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */; };
+		A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F35DF2274421C500761283 /* MeasurementMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A0CAD594273DA09300E76BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
 		A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerNodes.swift; sourceTree = "<group>"; };
+		A0F35DF2274421C500761283 /* MeasurementMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */,
+				A0F35DF12744218D00761283 /* Models */,
 			);
 			path = RulerViewController;
 			sourceTree = "<group>";
@@ -125,12 +128,36 @@
 		A0CAD5A2273EF27300E76BC0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */,
 				A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */,
-				A03A8B00273FA3E000C7A615 /* MeasurementType.swift */,
-				A03A8B02273FDF4A00C7A615 /* PickerNode.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A0F35DF12744218D00761283 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0F35DF5274424E400761283 /* Enums */,
+				A0F35DF4274424D600761283 /* Nodes */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0F35DF4274424D600761283 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */,
+				A03A8B02273FDF4A00C7A615 /* PickerNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		A0F35DF5274424E400761283 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8B00273FA3E000C7A615 /* MeasurementType.swift */,
+				A0F35DF2274421C500761283 /* MeasurementMode.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +234,7 @@
 				A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */,
 				A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */,
 				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
+				A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */,
 				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
 				A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */,

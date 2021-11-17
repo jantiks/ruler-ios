@@ -16,7 +16,8 @@ class RulerViewController: UIViewController {
     @IBOutlet private weak var sessionLabel: UILabel!
     
     private var nodes: [RulerNodes] = []
-    private var meauseremntType: MeasurementType = .feets
+    private var meauseremntType: MeasurementType = .meters
+    private var measurementMode: MeasurementMode = .ruler
     private var pickerNode: PickerNode!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -139,6 +140,17 @@ class RulerViewController: UIViewController {
             // the ruler node ends
             nodes.last?.setEndNode(node, type: meauseremntType, textRotation: getCameraRotation() ?? SCNVector3(0, 0, 0))
             setResultButtonText()
+            
+            if measurementMode == .ruler {
+                let lineNode = SCNNode()
+                let textNode = DrawnTextNode()
+                let rulerNode = RulerNodes(startNode: node, lineNode: lineNode, textNode: textNode)
+                
+                sceneView.scene.rootNode.addChildNode(lineNode)
+                sceneView.scene.rootNode.addChildNode(textNode)
+                
+                nodes.append(rulerNode)
+            }
         }
     }
     
