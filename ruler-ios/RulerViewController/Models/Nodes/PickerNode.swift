@@ -17,13 +17,13 @@ class PickerNode: SCNNode {
         super.init()
         
         // outer circle
-        let sphereGeometry = SCNTube(innerRadius: 0.06, outerRadius: 0.08, height: 0.001)
-        sphereGeometry.firstMaterial?.diffuse.contents = UIColor.white
+        let sphereGeometry = SCNTube(innerRadius: 0.05, outerRadius: 0.055, height: 0.001)
+        sphereGeometry.firstMaterial?.diffuse.contents = UIColor.rulerYellow
         outerCircleNode = SCNNode(geometry: sphereGeometry)
         
         // inner dot
-        let dotGeometry = SCNSphere(radius: 0.004)
-        dotGeometry.firstMaterial?.diffuse.contents = UIColor.white
+        let dotGeometry = SCNSphere(radius: 0.008)
+        dotGeometry.firstMaterial?.diffuse.contents = UIColor.rulerYellow
         innerDotNode = SCNNode(geometry: dotGeometry)
         
         // setting to have the same possition as MeasurereNode
@@ -43,8 +43,8 @@ class PickerNode: SCNNode {
     }
     
     func enable() {
-        outerCircleNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
-        innerDotNode.geometry?.firstMaterial?.diffuse.contents = UIColor.white
+        outerCircleNode.geometry?.firstMaterial?.diffuse.contents = UIColor.rulerYellow
+        innerDotNode.geometry?.firstMaterial?.diffuse.contents = UIColor.rulerYellow
         
         outerCircleNode.opacity = 1
         innerDotNode.opacity = 1

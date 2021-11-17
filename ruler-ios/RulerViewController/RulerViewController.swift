@@ -120,7 +120,8 @@ class RulerViewController: UIViewController {
     private func addPoint() {
         guard let worldPosition = getCenterWorldPosition() else { return }
         
-        let sphere = SCNSphere(radius: 0.006)
+        let sphere = SCNSphere(radius: 0.008)
+        sphere.firstMaterial?.diffuse.contents = UIColor.rulerYellow
         
         let node = SCNNode(geometry: sphere)
         node.position = worldPosition

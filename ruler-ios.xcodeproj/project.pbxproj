@@ -20,6 +20,7 @@
 		A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */; };
 		A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */; };
 		A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F35DF2274421C500761283 /* MeasurementMode.swift */; };
+		A0F35DF92745857B00761283 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F35DF82745857B00761283 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
 		A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerNodes.swift; sourceTree = "<group>"; };
 		A0F35DF2274421C500761283 /* MeasurementMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementMode.swift; sourceTree = "<group>"; };
+		A0F35DF82745857B00761283 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */,
+				A0F35DF82745857B00761283 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
 				A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */,
 				A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */,
+				A0F35DF92745857B00761283 /* UIColorExtension.swift in Sources */,
 				A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,
 			);

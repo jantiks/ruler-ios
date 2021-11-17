@@ -46,7 +46,7 @@ class RulerNodes {
     ///   - start: start vector
     ///   - end: end vector
     func buildLineWithTextNode(start: SCNVector3, end: SCNVector3, type: MeasurementType, textRotation: SCNVector3) {
-        lineNode.buildLineInTwoPointsWithRotation(from: start, to: end, radius: 0.001, diffuse: UIColor.white)
+        lineNode.buildLineInTwoPointsWithRotation(from: start, to: end, radius: 0.002, diffuse: UIColor.titleColor)
         textNode.update(pos1: start, pos2: end, type: type, textRotation: textRotation)
     }
     
