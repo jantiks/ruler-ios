@@ -14,6 +14,8 @@ class RulerViewController: UIViewController {
     @IBOutlet private weak var resultButton: UIButton!
     @IBOutlet private weak var resultButtonContainer: UIView!
     @IBOutlet private weak var sessionLabel: UILabel!
+    @IBOutlet private weak var modeButton: UIButton!
+    @IBOutlet private weak var flashButton: UIButton!
     
     private var nodes: [RulerNodes] = []
     private var meauseremntType: MeasurementType = .meters
@@ -59,6 +61,12 @@ class RulerViewController: UIViewController {
         
         resultButton.setTitleColor(.white, for: .normal)
         resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(25)
+        
+        flashButton.setImage(UIImage(named: "flashDisabled"), for: .normal)
+        flashButton.setImage(UIImage(named: "flashActive"), for: .highlighted)
+        
+        modeButton.setImage(UIImage(named: "shapeDisabled"), for: .normal)
+        modeButton.setImage(UIImage(named: "shapeActive"), for: .highlighted)
     }
     
     private func setNodes() {
@@ -155,6 +163,12 @@ class RulerViewController: UIViewController {
         }
     }
     
+    private func removeAllNodes() {
+        nodes.forEach({ $0.removeNodes() })
+        nodes.removeAll()
+        resultButton.setTitle("", for: .normal)
+    }
+    
     /// depeneds on ARSession tracking state, the method shows or hides a label which indicates about the state of the ar session if there is something wrong
     /// - Parameters:
     ///   - frame: ARFrame
@@ -221,11 +235,16 @@ class RulerViewController: UIViewController {
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
+    
     // MARK: IBActions
+    @IBAction func toggleModeAction(_ sender: UIButton) {
+        sender.isHighlighted.toggle()
+        measurementMode = sender.isHighlighted ? .ruler : .line
+        removeAllNodes()
+    }
+    
     @IBAction func reloadAction(_ sender: UIButton) {
-        nodes.forEach({ $0.removeNodes() })
-        nodes.removeAll()
-        resultButton.setTitle("", for: .normal)
+        removeAllNodes()
     }
     
     @IBAction func rulerAction(_ sender: UIButton) {
@@ -234,6 +253,7 @@ class RulerViewController: UIViewController {
     
     @IBAction func flashLightAction(_ sender: UIButton) {
         toggleTorch()
+        sender.isHighlighted.toggle()
     }
     
     @IBAction func changeMeasurementType(_ sender: UIButton) {

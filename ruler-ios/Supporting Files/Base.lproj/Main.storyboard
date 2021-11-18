@@ -20,52 +20,40 @@
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L3a-9p-fem">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </arscnView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kpd-P1-EOL">
-                                <rect key="frame" x="0.0" y="816" width="414" height="80"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-zt-CbC" userLabel="controll buttons">
+                                <rect key="frame" x="60" y="778" width="294" height="64"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="WcT-zt-CbC">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="46"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Do-lv-I2i">
-                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="46"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.backward.fill" catalog="system"/>
-                                                <connections>
-                                                    <action selector="reloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Eo7-dl-3pN"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLA-3u-Cth">
-                                                <rect key="frame" x="129.5" y="0.0" width="115" height="46"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="rulerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aha-dJ-tvk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3M-oo-I0s">
-                                                <rect key="frame" x="259.5" y="0.0" width="114.5" height="46"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="flashlight.off.fill" catalog="system"/>
-                                                <connections>
-                                                    <action selector="flashLightAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVk-Wj-lIO"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Do-lv-I2i" userLabel="shape">
+                                        <rect key="frame" x="0.0" y="0.0" width="74" height="64"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="shapeDisabled"/>
+                                        <connections>
+                                            <action selector="toggleModeAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kdT-8H-GHB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLA-3u-Cth" userLabel="ruler">
+                                        <rect key="frame" x="110" y="0.0" width="74" height="64"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="rulerActive" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="rulerAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aha-dJ-tvk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3M-oo-I0s" userLabel="flash">
+                                        <rect key="frame" x="220" y="0.0" width="74" height="64"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="flashDisabled"/>
+                                        <connections>
+                                            <action selector="flashLightAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVk-Wj-lIO"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
-                                <constraints>
-                                    <constraint firstItem="WcT-zt-CbC" firstAttribute="leading" secondItem="Kpd-P1-EOL" secondAttribute="leading" constant="20" id="1hb-Kl-vW0"/>
-                                    <constraint firstAttribute="trailing" secondItem="WcT-zt-CbC" secondAttribute="trailing" constant="20" id="SSz-9v-Vx5"/>
-                                    <constraint firstAttribute="height" constant="80" id="tFa-Ox-POh"/>
-                                    <constraint firstItem="WcT-zt-CbC" firstAttribute="top" secondItem="Kpd-P1-EOL" secondAttribute="top" id="yoH-Ny-uQV"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7C-pc-9av" userLabel="result button container">
                                 <rect key="frame" x="87" y="114" width="240" height="55"/>
                                 <subviews>
@@ -102,25 +90,36 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OI1-vm-nFs" userLabel="remove">
+                                <rect key="frame" x="185" y="743.5" width="44.5" height="34.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="remove"/>
+                                <connections>
+                                    <action selector="reloadAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qyg-63-El4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="lcC-RQ-I5K" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="E2r-uz-635"/>
                             <constraint firstItem="lcC-RQ-I5K" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ENL-JZ-Pe7"/>
+                            <constraint firstItem="OI1-vm-nFs" firstAttribute="centerX" secondItem="BLA-3u-Cth" secondAttribute="centerX" id="KUM-Lw-PRR"/>
                             <constraint firstItem="m7C-pc-9av" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Nka-Vd-MEJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WcT-zt-CbC" secondAttribute="bottom" id="QyU-l2-jZs"/>
+                            <constraint firstItem="WcT-zt-CbC" firstAttribute="top" secondItem="OI1-vm-nFs" secondAttribute="bottom" id="URg-yb-YtP"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="WrA-B6-CkV"/>
+                            <constraint firstItem="WcT-zt-CbC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="Xyf-5Q-PyB"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dye-nS-4El"/>
-                            <constraint firstAttribute="bottom" secondItem="Kpd-P1-EOL" secondAttribute="bottom" id="jRj-xc-CYI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WcT-zt-CbC" secondAttribute="bottom" constant="20" id="jfz-hg-cxM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WcT-zt-CbC" secondAttribute="trailing" constant="60" id="jnZ-xa-RJL"/>
                             <constraint firstAttribute="bottom" secondItem="L3a-9p-fem" secondAttribute="bottom" id="l3k-4e-EfC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kpd-P1-EOL" secondAttribute="trailing" id="oqd-ao-7dQ"/>
                             <constraint firstItem="m7C-pc-9av" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="xRR-if-OU2"/>
                             <constraint firstItem="L3a-9p-fem" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="yOW-QX-Wto"/>
-                            <constraint firstItem="Kpd-P1-EOL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="yb3-t3-ZS6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="flashButton" destination="H3M-oo-I0s" id="uma-iT-bnn"/>
+                        <outlet property="modeButton" destination="4Do-lv-I2i" id="tsz-Ai-ouT"/>
                         <outlet property="resultButton" destination="ZOr-dZ-vtg" id="UGA-Ku-azP"/>
                         <outlet property="resultButtonContainer" destination="m7C-pc-9av" id="VlJ-xE-5HB"/>
                         <outlet property="sceneView" destination="L3a-9p-fem" id="rl4-Gv-uX3"/>
@@ -133,14 +132,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
-        <image name="flashlight.off.fill" catalog="system" width="76" height="128"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="flashDisabled" width="50" height="50"/>
+        <image name="remove" width="20.5" height="20.5"/>
+        <image name="rulerActive" width="50" height="50"/>
+        <image name="shapeDisabled" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
