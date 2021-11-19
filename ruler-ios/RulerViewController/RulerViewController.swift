@@ -19,7 +19,7 @@ class RulerViewController: UIViewController {
     
     private var nodes: [RulerNodes] = []
     private var meauseremntType: MeasurementType = .meters
-    private var measurementMode: MeasurementMode = .ruler
+    private var measurementMode: MeasurementMode = .line
     private var pickerNode: PickerNode!
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -63,10 +63,10 @@ class RulerViewController: UIViewController {
         resultButton.titleLabel?.font = resultButton.titleLabel?.font.withSize(25)
         
         flashButton.setImage(UIImage(named: "flashDisabled"), for: .normal)
-        flashButton.setImage(UIImage(named: "flashActive"), for: .highlighted)
+        flashButton.setImage(UIImage(named: "flashActive"), for: .selected)
         
         modeButton.setImage(UIImage(named: "shapeDisabled"), for: .normal)
-        modeButton.setImage(UIImage(named: "shapeActive"), for: .highlighted)
+        modeButton.setImage(UIImage(named: "shapeActive"), for: .selected)
     }
     
     private func setNodes() {
@@ -238,8 +238,8 @@ class RulerViewController: UIViewController {
     
     // MARK: IBActions
     @IBAction func toggleModeAction(_ sender: UIButton) {
-        sender.isHighlighted.toggle()
-        measurementMode = sender.isHighlighted ? .ruler : .line
+        sender.isSelected.toggle()
+        measurementMode = sender.isSelected ? .ruler : .line
         removeAllNodes()
     }
     
@@ -253,7 +253,7 @@ class RulerViewController: UIViewController {
     
     @IBAction func flashLightAction(_ sender: UIButton) {
         toggleTorch()
-        sender.isHighlighted.toggle()
+        sender.isSelected.toggle()
     }
     
     @IBAction func changeMeasurementType(_ sender: UIButton) {
