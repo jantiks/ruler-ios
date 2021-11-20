@@ -28,15 +28,10 @@ class RulerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         sceneView.delegate = self
-        
-        let configuration = ARWorldTrackingConfiguration()
-        configuration.planeDetection = [.horizontal, .vertical]
-        
-        sceneView.session.run(configuration, options: [])
-        sceneView.debugOptions = [.showFeaturePoints]
-        
+
+        resetTracking()
         initUi()
         setNodes()
     }
@@ -232,7 +227,9 @@ class RulerViewController: UIViewController {
     private func resetTracking() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
+        
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        sceneView.debugOptions = [.showFeaturePoints]
     }
     
     

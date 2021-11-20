@@ -11,6 +11,9 @@
 		A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */; };
 		A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B00273FA3E000C7A615 /* MeasurementType.swift */; };
 		A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* PickerNode.swift */; };
+		A04536C9274854E3005E495B /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536C8274854E3005E495B /* WalkThroughViewController.swift */; };
+		A04536CC274930D2005E495B /* CommonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CB274930D2005E495B /* CommonCommand.swift */; };
+		A04536CF2749318D005E495B /* UserSeenWalkThroughScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */; };
 		A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */; };
 		A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */; };
 		A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */; };
@@ -28,6 +31,9 @@
 		A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHelper.swift; sourceTree = "<group>"; };
 		A03A8B00273FA3E000C7A615 /* MeasurementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementType.swift; sourceTree = "<group>"; };
 		A03A8B02273FDF4A00C7A615 /* PickerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerNode.swift; sourceTree = "<group>"; };
+		A04536C8274854E3005E495B /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
+		A04536CB274930D2005E495B /* CommonCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCommand.swift; sourceTree = "<group>"; };
+		A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenWalkThroughScene.swift; sourceTree = "<group>"; };
 		A0CAD583273DA08E00E76BC0 /* ruler-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ruler-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,31 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		A04536C72748494D005E495B /* WalkThroughViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CD274930F5005E495B /* Commands */,
+				A04536C8274854E3005E495B /* WalkThroughViewController.swift */,
+			);
+			path = WalkThroughViewController;
+			sourceTree = "<group>";
+		};
+		A04536CA274930B0005E495B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CB274930D2005E495B /* CommonCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		A04536CD274930F5005E495B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
 		A0CAD57A273DA08E00E76BC0 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				A0CAD59E273EF1FA00E76BC0 /* Main */,
+				A04536C72748494D005E495B /* WalkThroughViewController */,
 				A0CAD59C273EF0AA00E76BC0 /* RulerViewController */,
 				A0CAD59D273EF0C800E76BC0 /* Supporting Files */,
 				A0CAD594273DA09300E76BC0 /* Info.plist */,
@@ -112,6 +144,7 @@
 		A0CAD59E273EF1FA00E76BC0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A04536CA274930B0005E495B /* Commands */,
 				A03A8AFE273FA3CA00C7A615 /* Helpers */,
 				A0CAD5A2273EF27300E76BC0 /* Models */,
 				A0CAD5A1273EF26700E76BC0 /* Extensions */,
@@ -235,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */,
+				A04536CC274930D2005E495B /* CommonCommand.swift in Sources */,
 				A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */,
+				A04536CF2749318D005E495B /* UserSeenWalkThroughScene.swift in Sources */,
 				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
 				A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */,
 				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
@@ -243,6 +278,7 @@
 				A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */,
 				A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */,
 				A0F35DF92745857B00761283 /* UIColorExtension.swift in Sources */,
+				A04536C9274854E3005E495B /* WalkThroughViewController.swift in Sources */,
 				A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,
 			);
