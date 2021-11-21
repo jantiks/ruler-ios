@@ -12,6 +12,9 @@ class SubscriptionViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private let privacyUrlStr = "https://pages.flycricket.io/ar-ruler-measuring-0/privacy.html"
+    private let termsUrlStr = "https://pages.flycricket.io/ar-ruler-measuring-0/terms.html"
+    
     private let itemsPerRow: CGFloat = 2
     private let rows: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -51,9 +54,13 @@ class SubscriptionViewController: UIViewController {
     
     
     @IBAction func privacyAction(_ sender: UIButton) {
+        guard let url = URL(string: privacyUrlStr) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func termsAction(_ sender: UIButton) {
+        guard let url = URL(string: termsUrlStr) else { return }
+        UIApplication.shared.open(url)
     }
     
     @IBAction func closeAction(_ sender: UIButton) {

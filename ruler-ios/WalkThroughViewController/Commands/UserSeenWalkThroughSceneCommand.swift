@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserSeenWalkThroughScene: CommonCommand {
+struct UserSeenWalkThroughSceneCommand: CommonCommand {
     
     func execute() {
         UserDefaults.standard.set(true, forKey: "UserHasSeenWalkThroughScene")

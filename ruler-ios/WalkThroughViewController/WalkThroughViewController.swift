@@ -45,7 +45,7 @@ class WalkThroughViewController: UIViewController {
     
     @IBAction func skipAction(_ sender: UIButton) {
         // save in user defaults
-        UserSeenWalkThroughScene().execute()
+        UserSeenWalkThroughSceneCommand().execute()
         
         guard let vc: RulerViewController = getController() else { return }
         vc.modalPresentationStyle = .fullScreen
@@ -60,12 +60,13 @@ class WalkThroughViewController: UIViewController {
         
         // if in the last page
         if currentPage == 2 {
-//            UserSeenWalkThroughScene().execute()
+            UserSeenWalkThroughSceneCommand().execute()
             guard let vc: SubscriptionViewController = getController() else { return }
             
             vc.modalPresentationStyle = .fullScreen
-            vc.closeCommand = DoneCommand({ [weak self] in
+            vc.closeCommand = DoneCommand({
                 guard let vc: RulerViewController = getController() else { return }
+                
                 vc.modalPresentationStyle = .fullScreen
                 AppDelegate.getController()?.present(vc, animated: true)
             })

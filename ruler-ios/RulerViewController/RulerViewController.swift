@@ -21,6 +21,7 @@ class RulerViewController: UIViewController {
     private var meauseremntType: MeasurementType = .meters
     private var measurementMode: MeasurementMode = .line
     private var pickerNode: PickerNode?
+    private var numberOfTimesTorchTapped = 0
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -34,12 +35,6 @@ class RulerViewController: UIViewController {
         resetTracking()
         initUi()
         setNodes()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        sceneView.session.pause()
     }
     
     // MARK: Private methods.
@@ -227,6 +222,21 @@ class RulerViewController: UIViewController {
         }
     }
     
+    private func shouldShowSubscriptionPage() -> Bool {
+        return numberOfTimesTorchTapped >= 4
+    }
+    
+    private func showSubscriptionPage() {
+        guard let vc: SubscriptionViewController = getController() else { return }
+        
+        vc.closeCommand = DoneCommand({ [weak self] in
+            self?.numberOfTimesTorchTapped = 0
+        })
+        vc.modalPresentationStyle = .fullScreen
+        
+        present(vc, animated: true)
+    }
+    
     private func resetTracking() {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = [.horizontal, .vertical]
@@ -252,6 +262,12 @@ class RulerViewController: UIViewController {
     }
     
     @IBAction func flashLightAction(_ sender: UIButton) {
+        if shouldShowSubscriptionPage() {
+            showSubscriptionPage()
+            return
+        }
+        
+        numberOfTimesTorchTapped += 1
         toggleTorch()
         sender.isSelected.toggle()
     }
@@ -312,11 +328,5 @@ extension RulerViewController: ARSCNViewDelegate {
             self.updateCurrentLinePosition()
             self.enableOrDisablePickerNode()
         }
-    }
-}
-
-extension SCNVector3 {
-    static func +(lhv:SCNVector3, rhv:SCNVector3) -> SCNVector3 {
-         return SCNVector3(lhv.x + rhv.x, lhv.y + rhv.y, lhv.z + rhv.z)
     }
 }

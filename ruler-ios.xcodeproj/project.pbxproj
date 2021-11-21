@@ -13,7 +13,7 @@
 		A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* PickerNode.swift */; };
 		A04536C9274854E3005E495B /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536C8274854E3005E495B /* WalkThroughViewController.swift */; };
 		A04536CC274930D2005E495B /* CommonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CB274930D2005E495B /* CommonCommand.swift */; };
-		A04536CF2749318D005E495B /* UserSeenWalkThroughScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */; };
+		A04536CF2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */; };
 		A04536D227496E48005E495B /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D127496E48005E495B /* SubscriptionViewController.swift */; };
 		A04536D4274972BF005E495B /* DoneCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D3274972BF005E495B /* DoneCommand.swift */; };
 		A04536D6274973EC005E495B /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D5274973EC005E495B /* GlobalExtension.swift */; };
@@ -42,7 +42,7 @@
 		A03A8B02273FDF4A00C7A615 /* PickerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerNode.swift; sourceTree = "<group>"; };
 		A04536C8274854E3005E495B /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
 		A04536CB274930D2005E495B /* CommonCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCommand.swift; sourceTree = "<group>"; };
-		A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenWalkThroughScene.swift; sourceTree = "<group>"; };
+		A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenWalkThroughSceneCommand.swift; sourceTree = "<group>"; };
 		A04536D127496E48005E495B /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		A04536D3274972BF005E495B /* DoneCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCommand.swift; sourceTree = "<group>"; };
 		A04536D5274973EC005E495B /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		A04536CD274930F5005E495B /* Commands */ = {
 			isa = PBXGroup;
 			children = (
-				A04536CE2749318D005E495B /* UserSeenWalkThroughScene.swift */,
+				A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -340,7 +340,7 @@
 				A04536D4274972BF005E495B /* DoneCommand.swift in Sources */,
 				A04536CC274930D2005E495B /* CommonCommand.swift in Sources */,
 				A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */,
-				A04536CF2749318D005E495B /* UserSeenWalkThroughScene.swift in Sources */,
+				A04536CF2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift in Sources */,
 				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
 				A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */,
 				A04536DE27499FCB005E495B /* SubscriptionDefaultCellModel.swift in Sources */,
