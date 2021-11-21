@@ -43,23 +43,35 @@ class WalkThroughViewController: UIViewController {
         // save in user defaults
         UserSeenWalkThroughScene().execute()
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "RulerViewController") as? RulerViewController else { return }
+        guard let vc: RulerViewController = getController() else { return }
         vc.modalPresentationStyle = .fullScreen
         
-        dismiss(animated: false)
         present(vc, animated: true)
     }
     
+    /// changes the scroll view to the next page, if the page is the last one, it presents new controller.
+    /// - Parameter sender: continune button
     @IBAction func continueAction(_ sender: UIButton) {
         let currentPage = pageControl.currentPage
         
+        // if in the last page
         if currentPage == 2 {
-            // ended all pages
-            // subscribe action
-            UserSeenWalkThroughScene().execute()
+//            UserSeenWalkThroughScene().execute()
+            guard let vc: SubscriptionViewController = getController() else { return }
+            
+            vc.modalPresentationStyle = .fullScreen
+            vc.closeCommand = DoneCommand({ [weak self] in
+                guard let vc: RulerViewController = getController() else { return }
+                vc.modalPresentationStyle = .fullScreen
+                AppDelegate.getController()?.present(vc, animated: true)
+            })
+            
+            present(vc, animated: true)
+            
             return
         }
         
+        // changing to new page
         scrollView.setContentOffset(CGPoint(x: scrollView.bounds.width * CGFloat(currentPage + 1), y: 0), animated: true)
     }
 }

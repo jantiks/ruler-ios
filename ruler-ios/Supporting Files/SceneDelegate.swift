@@ -53,7 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func getInitialViewController() -> UIViewController? {
         let hasSeenWalkThrough = UserDefaults.standard.bool(forKey: "UserHasSeenWalkThroughScene")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+                
         if !hasSeenWalkThrough {
             return storyboard.instantiateViewController(withIdentifier: "WalkThroughViewController")
         }
