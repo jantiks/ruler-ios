@@ -7,23 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */; };
+		A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */; };
+		A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B00273FA3E000C7A615 /* MeasurementType.swift */; };
+		A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A8B02273FDF4A00C7A615 /* PickerNode.swift */; };
+		A04536C9274854E3005E495B /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536C8274854E3005E495B /* WalkThroughViewController.swift */; };
+		A04536CC274930D2005E495B /* CommonCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CB274930D2005E495B /* CommonCommand.swift */; };
+		A04536CF2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */; };
+		A04536D227496E48005E495B /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D127496E48005E495B /* SubscriptionViewController.swift */; };
+		A04536D4274972BF005E495B /* DoneCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D3274972BF005E495B /* DoneCommand.swift */; };
+		A04536D6274973EC005E495B /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D5274973EC005E495B /* GlobalExtension.swift */; };
+		A04536DA274996C6005E495B /* SubscriptionCellDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536D8274996C6005E495B /* SubscriptionCellDefault.swift */; };
+		A04536DB274996C6005E495B /* SubscriptionCellDefault.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04536D9274996C6005E495B /* SubscriptionCellDefault.xib */; };
+		A04536DE27499FCB005E495B /* SubscriptionDefaultCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536DD27499FCB005E495B /* SubscriptionDefaultCellModel.swift */; };
+		A04536E02749A015005E495B /* SubscriptionSelectedCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536DF2749A015005E495B /* SubscriptionSelectedCellModel.swift */; };
+		A04536E32749AA4F005E495B /* SubscriptionSelectedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04536E12749AA4F005E495B /* SubscriptionSelectedCell.swift */; };
+		A04536E42749AA4F005E495B /* SubscriptionSelectedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04536E22749AA4F005E495B /* SubscriptionSelectedCell.xib */; };
 		A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */; };
 		A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */; };
-		A0CAD58B273DA08E00E76BC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* ViewController.swift */; };
+		A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */; };
 		A0CAD58E273DA08E00E76BC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58C273DA08E00E76BC0 /* Main.storyboard */; };
 		A0CAD590273DA09300E76BC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD58F273DA09300E76BC0 /* Assets.xcassets */; };
 		A0CAD593273DA09300E76BC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */; };
+		A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */; };
+		A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */; };
+		A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F35DF2274421C500761283 /* MeasurementMode.swift */; };
+		A0F35DF92745857B00761283 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F35DF82745857B00761283 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawnTextNode.swift; sourceTree = "<group>"; };
+		A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNHelper.swift; sourceTree = "<group>"; };
+		A03A8B00273FA3E000C7A615 /* MeasurementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementType.swift; sourceTree = "<group>"; };
+		A03A8B02273FDF4A00C7A615 /* PickerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerNode.swift; sourceTree = "<group>"; };
+		A04536C8274854E3005E495B /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
+		A04536CB274930D2005E495B /* CommonCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonCommand.swift; sourceTree = "<group>"; };
+		A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSeenWalkThroughSceneCommand.swift; sourceTree = "<group>"; };
+		A04536D127496E48005E495B /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		A04536D3274972BF005E495B /* DoneCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneCommand.swift; sourceTree = "<group>"; };
+		A04536D5274973EC005E495B /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
+		A04536D8274996C6005E495B /* SubscriptionCellDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionCellDefault.swift; sourceTree = "<group>"; };
+		A04536D9274996C6005E495B /* SubscriptionCellDefault.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionCellDefault.xib; sourceTree = "<group>"; };
+		A04536DD27499FCB005E495B /* SubscriptionDefaultCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionDefaultCellModel.swift; sourceTree = "<group>"; };
+		A04536DF2749A015005E495B /* SubscriptionSelectedCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectedCellModel.swift; sourceTree = "<group>"; };
+		A04536E12749AA4F005E495B /* SubscriptionSelectedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSelectedCell.swift; sourceTree = "<group>"; };
+		A04536E22749AA4F005E495B /* SubscriptionSelectedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionSelectedCell.xib; sourceTree = "<group>"; };
 		A0CAD583273DA08E00E76BC0 /* ruler-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ruler-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A0CAD58A273DA08E00E76BC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerViewController.swift; sourceTree = "<group>"; };
 		A0CAD58D273DA08E00E76BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0CAD58F273DA09300E76BC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0CAD592273DA09300E76BC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0CAD594273DA09300E76BC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCNNodeExtension.swift; sourceTree = "<group>"; };
+		A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulerNodes.swift; sourceTree = "<group>"; };
+		A0F35DF2274421C500761283 /* MeasurementMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementMode.swift; sourceTree = "<group>"; };
+		A0F35DF82745857B00761283 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +77,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A03A8AFE273FA3CA00C7A615 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8AFC273F0DB500C7A615 /* SCNHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A04536C72748494D005E495B /* WalkThroughViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CD274930F5005E495B /* Commands */,
+				A04536C8274854E3005E495B /* WalkThroughViewController.swift */,
+			);
+			path = WalkThroughViewController;
+			sourceTree = "<group>";
+		};
+		A04536CA274930B0005E495B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CB274930D2005E495B /* CommonCommand.swift */,
+				A04536D3274972BF005E495B /* DoneCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		A04536CD274930F5005E495B /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CE2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		A04536D0274967CE005E495B /* SubscriptionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A04536DC27499F93005E495B /* Models */,
+				A04536D7274995F3005E495B /* CollectionView Cells */,
+				A04536D127496E48005E495B /* SubscriptionViewController.swift */,
+			);
+			path = SubscriptionViewController;
+			sourceTree = "<group>";
+		};
+		A04536D7274995F3005E495B /* CollectionView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A04536E62749AA61005E495B /* Default */,
+				A04536E52749AA57005E495B /* Selected */,
+			);
+			path = "CollectionView Cells";
+			sourceTree = "<group>";
+		};
+		A04536DC27499F93005E495B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A04536DD27499FCB005E495B /* SubscriptionDefaultCellModel.swift */,
+				A04536DF2749A015005E495B /* SubscriptionSelectedCellModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A04536E52749AA57005E495B /* Selected */ = {
+			isa = PBXGroup;
+			children = (
+				A04536E12749AA4F005E495B /* SubscriptionSelectedCell.swift */,
+				A04536E22749AA4F005E495B /* SubscriptionSelectedCell.xib */,
+			);
+			path = Selected;
+			sourceTree = "<group>";
+		};
+		A04536E62749AA61005E495B /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				A04536D8274996C6005E495B /* SubscriptionCellDefault.swift */,
+				A04536D9274996C6005E495B /* SubscriptionCellDefault.xib */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
 		A0CAD57A273DA08E00E76BC0 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +176,91 @@
 		A0CAD585273DA08E00E76BC0 /* ruler-ios */ = {
 			isa = PBXGroup;
 			children = (
-				A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */,
-				A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */,
-				A0CAD58A273DA08E00E76BC0 /* ViewController.swift */,
-				A0CAD58C273DA08E00E76BC0 /* Main.storyboard */,
-				A0CAD58F273DA09300E76BC0 /* Assets.xcassets */,
-				A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */,
+				A0CAD59E273EF1FA00E76BC0 /* Main */,
+				A04536D0274967CE005E495B /* SubscriptionViewController */,
+				A04536C72748494D005E495B /* WalkThroughViewController */,
+				A0CAD59C273EF0AA00E76BC0 /* RulerViewController */,
+				A0CAD59D273EF0C800E76BC0 /* Supporting Files */,
 				A0CAD594273DA09300E76BC0 /* Info.plist */,
 			);
 			path = "ruler-ios";
+			sourceTree = "<group>";
+		};
+		A0CAD59C273EF0AA00E76BC0 /* RulerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD58A273DA08E00E76BC0 /* RulerViewController.swift */,
+				A0F35DF12744218D00761283 /* Models */,
+			);
+			path = RulerViewController;
+			sourceTree = "<group>";
+		};
+		A0CAD59D273EF0C800E76BC0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD586273DA08E00E76BC0 /* AppDelegate.swift */,
+				A0CAD588273DA08E00E76BC0 /* SceneDelegate.swift */,
+				A0CAD58C273DA08E00E76BC0 /* Main.storyboard */,
+				A0CAD58F273DA09300E76BC0 /* Assets.xcassets */,
+				A0CAD591273DA09300E76BC0 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A0CAD59E273EF1FA00E76BC0 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				A04536CA274930B0005E495B /* Commands */,
+				A03A8AFE273FA3CA00C7A615 /* Helpers */,
+				A0CAD5A2273EF27300E76BC0 /* Models */,
+				A0CAD5A1273EF26700E76BC0 /* Extensions */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		A0CAD5A1273EF26700E76BC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD59F273EF20F00E76BC0 /* SCNNodeExtension.swift */,
+				A0F35DF82745857B00761283 /* UIColorExtension.swift */,
+				A04536D5274973EC005E495B /* GlobalExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A0CAD5A2273EF27300E76BC0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8AFA273F0AA200C7A615 /* DrawnTextNode.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0F35DF12744218D00761283 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A0F35DF5274424E400761283 /* Enums */,
+				A0F35DF4274424D600761283 /* Nodes */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A0F35DF4274424D600761283 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				A0CAD5A3273EF33C00E76BC0 /* RulerNodes.swift */,
+				A03A8B02273FDF4A00C7A615 /* PickerNode.swift */,
+			);
+			path = Nodes;
+			sourceTree = "<group>";
+		};
+		A0F35DF5274424E400761283 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A03A8B00273FA3E000C7A615 /* MeasurementType.swift */,
+				A0F35DF2274421C500761283 /* MeasurementMode.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +323,9 @@
 			files = (
 				A0CAD593273DA09300E76BC0 /* LaunchScreen.storyboard in Resources */,
 				A0CAD590273DA09300E76BC0 /* Assets.xcassets in Resources */,
+				A04536DB274996C6005E495B /* SubscriptionCellDefault.xib in Resources */,
 				A0CAD58E273DA08E00E76BC0 /* Main.storyboard in Resources */,
+				A04536E42749AA4F005E495B /* SubscriptionSelectedCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +336,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0CAD58B273DA08E00E76BC0 /* ViewController.swift in Sources */,
+				A03A8B01273FA3E000C7A615 /* MeasurementType.swift in Sources */,
+				A04536D4274972BF005E495B /* DoneCommand.swift in Sources */,
+				A04536CC274930D2005E495B /* CommonCommand.swift in Sources */,
+				A0CAD5A0273EF20F00E76BC0 /* SCNNodeExtension.swift in Sources */,
+				A04536CF2749318D005E495B /* UserSeenWalkThroughSceneCommand.swift in Sources */,
+				A03A8AFD273F0DB500C7A615 /* SCNHelper.swift in Sources */,
+				A0F35DF3274421C500761283 /* MeasurementMode.swift in Sources */,
+				A04536DE27499FCB005E495B /* SubscriptionDefaultCellModel.swift in Sources */,
+				A04536D227496E48005E495B /* SubscriptionViewController.swift in Sources */,
+				A0CAD58B273DA08E00E76BC0 /* RulerViewController.swift in Sources */,
+				A04536E32749AA4F005E495B /* SubscriptionSelectedCell.swift in Sources */,
+				A04536E02749A015005E495B /* SubscriptionSelectedCellModel.swift in Sources */,
 				A0CAD587273DA08E00E76BC0 /* AppDelegate.swift in Sources */,
+				A03A8B03273FDF4A00C7A615 /* PickerNode.swift in Sources */,
+				A04536D6274973EC005E495B /* GlobalExtension.swift in Sources */,
+				A04536DA274996C6005E495B /* SubscriptionCellDefault.swift in Sources */,
+				A03A8AFB273F0AA200C7A615 /* DrawnTextNode.swift in Sources */,
+				A0F35DF92745857B00761283 /* UIColorExtension.swift in Sources */,
+				A04536C9274854E3005E495B /* WalkThroughViewController.swift in Sources */,
+				A0CAD5A4273EF33C00E76BC0 /* RulerNodes.swift in Sources */,
 				A0CAD589273DA08E00E76BC0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
