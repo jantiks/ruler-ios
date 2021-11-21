@@ -20,7 +20,7 @@ class RulerViewController: UIViewController {
     private var nodes: [RulerNodes] = []
     private var meauseremntType: MeasurementType = .meters
     private var measurementMode: MeasurementMode = .line
-    private var pickerNode: PickerNode!
+    private var pickerNode: PickerNode?
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
@@ -65,8 +65,10 @@ class RulerViewController: UIViewController {
     }
     
     private func setNodes() {
+        removeAllNodes()
+        
         pickerNode = PickerNode()
-        sceneView.scene.rootNode.addChildNode(pickerNode)
+        sceneView.scene.rootNode.addChildNode(pickerNode!)
     }
     
     private func setResultButtonText(_ endVector: SCNVector3? = nil) {
@@ -194,6 +196,7 @@ class RulerViewController: UIViewController {
         
         sessionLabel.text = message
         sessionLabel.isHidden = message.isEmpty
+        pickerNode?.isHidden = !message.isEmpty
     }
     
     /// every time changing the position of the line which is created between start node and the Picker Node.
@@ -214,13 +217,13 @@ class RulerViewController: UIViewController {
             let anchoredNode = sceneView.node(for: planeAnchor),
             let position = getCenterWorldPosition() {
             // ARKit could find a plane
-            pickerNode.position = position
-            pickerNode.rotation = anchoredNode.rotation
-            pickerNode.enable()
+            pickerNode?.position = position
+            pickerNode?.rotation = anchoredNode.rotation
+            pickerNode?.enable()
         } else if let featurePoint = sceneView.hitTest(screenCenter, types: .featurePoint).first {
             // ARKit couldn't find a plane
-            pickerNode.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
-            pickerNode.disable()
+            pickerNode?.position = SCNVector3Make(featurePoint.worldTransform.columns.3.x, featurePoint.worldTransform.columns.3.y, featurePoint.worldTransform.columns.3.z)
+            pickerNode?.disable()
         }
     }
     

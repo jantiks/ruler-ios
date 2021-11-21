@@ -29,6 +29,10 @@ class SubscriptionViewController: UIViewController {
     
     var closeCommand: CommonCommand? // will work when the controller is closed
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

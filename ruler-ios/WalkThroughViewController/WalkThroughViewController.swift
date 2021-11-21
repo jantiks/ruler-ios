@@ -10,9 +10,13 @@ import UIKit
 class WalkThroughViewController: UIViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewsContentView: UIView!
+    @IBOutlet private weak var scrollViewsContentView: UIView!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var continueButton: UIButton!
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
