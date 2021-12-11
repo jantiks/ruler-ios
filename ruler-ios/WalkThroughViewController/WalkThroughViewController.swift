@@ -35,6 +35,8 @@ class WalkThroughViewController: UIViewController {
     }
     
     private func getCurrentPage() -> Int {
+        
+        print("CURRENT PAGE \(Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width))))")
         return Int(floorf(Float(scrollView.contentOffset.x) / Float(scrollView.frame.size.width)))
     }
     
@@ -59,17 +61,21 @@ class WalkThroughViewController: UIViewController {
         let currentPage = pageControl.currentPage
         
         // if in the last page
-        if currentPage == 2 {
+        if currentPage == 1 {
             UserSeenWalkThroughSceneCommand().execute()
-            guard let vc: SubscriptionViewController = getController() else { return }
+//            guard let vc: SubscriptionViewController = getController() else { return }
+//
+//            vc.modalPresentationStyle = .fullScreen
+//            vc.closeCommand = DoneCommand({
+//                guard let vc: RulerViewController = getController() else { return }
+//
+//                vc.modalPresentationStyle = .fullScreen
+//                AppDelegate.getController()?.present(vc, animated: true)
+//            })
+            
+            guard let vc: RulerViewController = getController() else { return }
             
             vc.modalPresentationStyle = .fullScreen
-            vc.closeCommand = DoneCommand({
-                guard let vc: RulerViewController = getController() else { return }
-                
-                vc.modalPresentationStyle = .fullScreen
-                AppDelegate.getController()?.present(vc, animated: true)
-            })
             
             present(vc, animated: true)
             

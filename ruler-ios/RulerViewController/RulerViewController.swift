@@ -262,10 +262,10 @@ class RulerViewController: UIViewController {
     }
     
     @IBAction func flashLightAction(_ sender: UIButton) {
-        if shouldShowSubscriptionPage() {
-            showSubscriptionPage()
-            return
-        }
+//        if shouldShowSubscriptionPage() {
+//            showSubscriptionPage()
+//            return
+//        }
         
         numberOfTimesTorchTapped += 1
         toggleTorch()
